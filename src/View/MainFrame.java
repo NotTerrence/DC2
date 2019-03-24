@@ -338,7 +338,7 @@ public class MainFrame {
             Object[] row = new Object[1];
             for(int i = 0; i< list.size(); i++)
             {
-                row[0] = list.get(i).getTitle(i); 
+            	row[0] = list.get(i).getTitle();
                 model.addRow(row);
             }
         }

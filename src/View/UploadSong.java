@@ -69,7 +69,7 @@ public class UploadSong {
 		
 		JPanel pnlBody = new JPanel();
 		pnlBody.setBackground(new Color(108, 122, 137));
-		pnlBody.setBounds(0, 56, 282, 308);
+		pnlBody.setBounds(0, 56, 282, 351);
 		frame.getContentPane().add(pnlBody);
 		pnlBody.setLayout(null);
 		
