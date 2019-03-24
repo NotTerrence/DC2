@@ -257,6 +257,12 @@ public class MainFrame {
 		frame.getContentPane().add(btnLoginAsGuest);
 		
 		JButton btnCreateANew = new JButton("Create a new account!");
+		btnCreateANew.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SignupFrame();
+			}
+		});
 		btnCreateANew.setBackground(new Color(44,62,80));
 		btnCreateANew.setForeground(Color.WHITE);
 		btnCreateANew.setFont(new Font("Agency FB", Font.BOLD, 15));
