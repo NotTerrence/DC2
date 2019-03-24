@@ -51,7 +51,7 @@ public class UploadSong {
 		frame.setVisible(true);
 		
 		JPanel pnlHeader = new JPanel();
-		pnlHeader.setBackground(new Color(255, 204, 51));
+		pnlHeader.setBackground(new Color(103, 128, 159));
 		pnlHeader.setBounds(0, 0, 282, 56);
 		frame.getContentPane().add(pnlHeader);
 		pnlHeader.setLayout(null);
@@ -69,7 +69,7 @@ public class UploadSong {
 		pnlHeader.add(lblX);
 		
 		JPanel pnlBody = new JPanel();
-		pnlBody.setBackground(new Color(0, 51, 102));
+		pnlBody.setBackground(new Color(108, 122, 137));
 		pnlBody.setBounds(0, 56, 282, 294);
 		frame.getContentPane().add(pnlBody);
 		pnlBody.setLayout(null);
