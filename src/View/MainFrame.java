@@ -21,6 +21,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Font;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.border.BevelBorder;
 
 public class MainFrame {
@@ -50,6 +56,8 @@ public class MainFrame {
 	 */
 	public MainFrame() {
 		initialize();
+                showPlaylists();
+                showSongs();
 	}
 	
 	private void initialize() {
@@ -120,16 +128,6 @@ public class MainFrame {
 		tblPL = new JTable();
 		tblPL.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
 			},
 			new String[] {
 				"Playlists"
@@ -223,17 +221,6 @@ public class MainFrame {
 		tblDash = new JTable();
 		tblDash.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
 			},
 			new String[] {
 				"Title", "Album", "Genre", "Year", "Artist"
@@ -244,12 +231,6 @@ public class MainFrame {
 		scrpnDash.setViewportView(tblDash);
 		
 		JButton btnLoginAsGuest = new JButton("Login as Guest");
-		btnLoginAsGuest.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new GuestFrame();
-			}
-		});
 		btnLoginAsGuest.setBackground(new Color(1,50,67));
 		btnLoginAsGuest.setForeground(Color.WHITE);
 		btnLoginAsGuest.setFont(new Font("Agency FB", Font.BOLD, 15));
@@ -257,12 +238,6 @@ public class MainFrame {
 		frame.getContentPane().add(btnLoginAsGuest);
 		
 		JButton btnCreateANew = new JButton("Create a new account!");
-		btnCreateANew.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new SignupFrame();
-			}
-		});
 		btnCreateANew.setBackground(new Color(44,62,80));
 		btnCreateANew.setForeground(Color.WHITE);
 		btnCreateANew.setFont(new Font("Agency FB", Font.BOLD, 15));
@@ -315,5 +290,75 @@ public class MainFrame {
 		btnMyProfile.setBackground(new Color(30, 130, 76));
 		btnMyProfile.setBounds(863, 0, 92, 23);
 		frame.getContentPane().add(btnMyProfile);
-	}
+        }
+                
+        public ArrayList<Playlist> playlist(){
+            ArrayList<Playlist> playlist = new ArrayList<>();
+            PreparedStatement st;
+            String query = "SELECT playlist_title"
+                    + " FROM playlists";
+                                
+            try {
+            st = MyConnection.getConnection().prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            Playlist list;
+            while(rs.next()){
+                list = new Playlist(rs.getString("playlist_title"));
+                playlist.add(list);
+            }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return playlist;
+        }
+        
+        public void showPlaylists(){
+            ArrayList<Playlist> list = playlist();
+            DefaultTableModel model = (DefaultTableModel)tblPL.getModel();
+            Object[] row = new Object[1];
+            for(int i = 0; i< list.size(); i++)
+            {
+                row[0] = list.get(i).getTitle(); 
+                model.addRow(row);
+            }
+        }
+                
+        public ArrayList<Song> songList(){
+            ArrayList<Song> songList = new ArrayList<>();
+            PreparedStatement st;
+            String query = "SELECT title, album, genre, year, artist_name"
+                    + " FROM songs";
+                    //+ " WHERE playlist_id = ?";
+                                
+            try {
+            st = MyConnection.getConnection().prepareStatement(query);
+            ResultSet rs = st.executeQuery();
+            Song song;
+            
+            while(rs.next()){
+                song = new Song(rs.getString("title"), rs.getString("album"), rs.getString("genre"), rs.getString("year"), rs.getString("artist_name"));
+                songList.add(song);
+            }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            return songList;
+        }
+        
+        public void showSongs(){
+            ArrayList<Song> list = songList();
+            DefaultTableModel model = (DefaultTableModel)tblDash.getModel();
+            Object[] row = new Object[5];
+            for(int i = 0; i< list.size(); i++)
+            {
+                row[0] = list.get(i).getTitle();
+                row[1] = list.get(i).getAlbum();
+                row[2] = list.get(i).getGenre();
+                row[3] = list.get(i).getYear();
+                row[4] = list.get(i).getArtist();   
+                model.addRow(row);
+            }
+        }
 }
