@@ -44,7 +44,7 @@ public class CreatePlaylist {
 		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 204, 51));
+		panel.setBackground(new Color(103, 128, 159));
 		panel.setBounds(0, 0, 276, 56);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -56,8 +56,8 @@ public class CreatePlaylist {
 		panel.add(lblCrtPly);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 51, 102));
-		panel_1.setBounds(0, 56, 276, 141);
+		panel_1.setBackground(new Color(108, 122, 137));
+		panel_1.setBounds(0, 56, 276, 96);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
