@@ -83,7 +83,7 @@ public class UploadSong {
 		
 		txtfldTitle = new JTextField();
 		txtfldTitle.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldTitle.setBackground(new Color(108, 122, 137));
+		txtfldTitle.setBackground(new Color(46, 49, 49));
 		txtfldTitle.setForeground(new Color(228, 241, 254));
 		txtfldTitle.setBounds(50, 12, 222, 20);
 		pnlBody.add(txtfldTitle);
@@ -91,7 +91,7 @@ public class UploadSong {
 		
 		txtfldYear = new JTextField();
 		txtfldYear.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldYear.setBackground(new Color(108, 122, 137));
+		txtfldYear.setBackground(new Color(46, 49, 49));
 		txtfldYear.setForeground(new Color(228, 241, 254));
 		txtfldYear.setBounds(50, 42, 222, 20);
 		pnlBody.add(txtfldYear);
@@ -146,7 +146,7 @@ public class UploadSong {
 		txtfldArt.setForeground(new Color(228, 241, 254));
 		txtfldArt.setFont(new Font("Arial", Font.PLAIN, 11));
 		txtfldArt.setColumns(10);
-		txtfldArt.setBackground(new Color(108, 122, 137));
+		txtfldArt.setBackground(new Color(46, 49, 49));
 		txtfldArt.setBounds(50, 72, 222, 20);
 		pnlBody.add(txtfldArt);
 		
@@ -176,7 +176,7 @@ public class UploadSong {
 		txtfldNew.setForeground(new Color(228, 241, 254));
 		txtfldNew.setFont(new Font("Arial", Font.PLAIN, 11));
 		txtfldNew.setColumns(10);
-		txtfldNew.setBackground(new Color(108, 122, 137));
+		txtfldNew.setBackground(new Color(46, 49, 49));
 		txtfldNew.setBounds(79, 134, 193, 20);
 		pnlBody.add(txtfldNew);
 		

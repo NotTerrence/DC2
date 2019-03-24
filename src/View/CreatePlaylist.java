@@ -70,7 +70,7 @@ public class CreatePlaylist {
 		
 		txtfldPL = new JTextField();
 		txtfldPL.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldPL.setBackground(new Color(108, 122, 137));
+		txtfldPL.setBackground(new Color(46, 49, 49));
 		txtfldPL.setForeground(new Color(228, 241, 254));
 		txtfldPL.setBounds(10, 37, 256, 20);
 		panel_1.add(txtfldPL);

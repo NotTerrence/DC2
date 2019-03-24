@@ -56,30 +56,6 @@ public class LoginPage {
 		lblLogin.setBounds(10, 11, 65, 34);
 		panel.add(lblLogin);
 		
-		JLabel lblMin = new JLabel("");
-		lblMin.setIcon(new ImageIcon(LoginPage.class.getResource("/javax/swing/plaf/metal/icons/ocean/iconify.gif")));
-		lblMin.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent arg0) {
-				frame.setState(frame.ICONIFIED);
-			}
-		});
-		lblMin.setForeground(Color.WHITE);
-		lblMin.setFont(new Font("Agency FB", Font.PLAIN, 35));
-		lblMin.setBounds(166, 0, 10, 18);
-		panel.add(lblMin);
-		
-		JLabel lblClose = new JLabel("");
-		lblClose.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				frame.dispose();
-			}
-		});
-		lblClose.setIcon(new ImageIcon(LoginPage.class.getResource("/javax/swing/plaf/metal/icons/ocean/paletteClose.gif")));
-		lblClose.setFont(new Font("Agency FB", Font.PLAIN, 32));
-		lblClose.setForeground(Color.WHITE);
-		lblClose.setBounds(186, 0, 9, 18);
-		panel.add(lblClose);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(108, 122, 137));
 		panel_1.setBounds(0, 56, 197, 158);
@@ -102,7 +78,7 @@ public class LoginPage {
 		
 		txtfldUN = new JTextField();
 		txtfldUN.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldUN.setBackground(new Color(108, 122, 137));
+		txtfldUN.setBackground(new Color(46, 49, 49));
 		txtfldUN.setForeground(new Color(228, 241, 254));
 		txtfldUN.setBounds(10, 37, 177, 20);
 		panel_1.add(txtfldUN);
@@ -110,7 +86,7 @@ public class LoginPage {
 		
 		txtfldPW = new JTextField();
 		txtfldPW.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldPW.setBackground(new Color(108, 122, 137));
+		txtfldPW.setBackground(new Color(46, 49, 49));
 		txtfldPW.setForeground(new Color(228, 241, 254));
 		txtfldPW.setBounds(10, 94, 177, 20);
 		panel_1.add(txtfldPW);

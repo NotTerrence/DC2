@@ -70,7 +70,7 @@ public class GuestFrame {
 		
 		txtfldUN = new JTextField();
 		txtfldUN.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldUN.setBackground(new Color(108, 122, 137));
+		txtfldUN.setBackground(new Color(46, 49, 49));
 		txtfldUN.setForeground(new Color(228, 241, 254));
 		txtfldUN.setBounds(10, 37, 177, 20);
 		panel_1.add(txtfldUN);

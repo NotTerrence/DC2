@@ -78,7 +78,7 @@ public class SignupFrame {
 		
 		txtfldUN = new JTextField();
 		txtfldUN.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldUN.setBackground(new Color(108, 122, 137));
+		txtfldUN.setBackground(new Color(46, 49, 49));
 		txtfldUN.setForeground(new Color(228, 241, 254));
 		txtfldUN.setBounds(10, 37, 177, 20);
 		panel_1.add(txtfldUN);
@@ -86,7 +86,7 @@ public class SignupFrame {
 		
 		txtfldPW = new JTextField();
 		txtfldPW.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldPW.setBackground(new Color(108, 122, 137));
+		txtfldPW.setBackground(new Color(46, 49, 49));
 		txtfldPW.setForeground(new Color(228, 241, 254));
 		txtfldPW.setBounds(10, 94, 177, 20);
 		panel_1.add(txtfldPW);
