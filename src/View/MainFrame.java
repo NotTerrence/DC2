@@ -239,7 +239,7 @@ public class MainFrame {
 		btnLogin.setBackground(new Color(0, 153, 51));
 		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setFont(new Font("Agency FB", Font.BOLD, 15));
-		btnLogin.setBounds(786, 0, 66, 23);
+		btnLogin.setBounds(889, 0, 66, 23);
 		frame.getContentPane().add(btnLogin);
 		
 		JButton btnRefreshDashboard = new JButton("Refresh Dashboard");
@@ -248,13 +248,6 @@ public class MainFrame {
 		btnRefreshDashboard.setBackground(new Color(34,167,240));
 		btnRefreshDashboard.setBounds(1215, 213, 135, 23);
 		frame.getContentPane().add(btnRefreshDashboard);
-		
-		JButton btnMyProfile = new JButton("My Profile");
-		btnMyProfile.setForeground(Color.WHITE);
-		btnMyProfile.setFont(new Font("Agency FB", Font.BOLD, 15));
-		btnMyProfile.setBackground(new Color(85, 107, 47));
-		btnMyProfile.setBounds(862, 0, 93, 23);
-		frame.getContentPane().add(btnMyProfile);
 		
 		JButton btnLogout = new JButton("Logout");
 		btnLogout.setForeground(Color.WHITE);
