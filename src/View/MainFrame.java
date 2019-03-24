@@ -244,6 +244,12 @@ public class MainFrame {
 		scrpnDash.setViewportView(tblDash);
 		
 		JButton btnLoginAsGuest = new JButton("Login as Guest");
+		btnLoginAsGuest.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new GuestFrame();
+			}
+		});
 		btnLoginAsGuest.setBackground(new Color(1,50,67));
 		btnLoginAsGuest.setForeground(Color.WHITE);
 		btnLoginAsGuest.setFont(new Font("Agency FB", Font.BOLD, 15));

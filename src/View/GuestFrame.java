@@ -80,7 +80,6 @@ public class GuestFrame {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				frame.dispose();
-				new LoginPage();
 			}
 		});
 		
@@ -96,7 +95,6 @@ public class GuestFrame {
         JButton btnSignin = new JButton("Sign In");
         btnSignin.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
-        		new Dashboard();
         		frame.dispose();
         	}
         });
