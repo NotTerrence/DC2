@@ -96,7 +96,6 @@ public class SignupFrame {
 		btnCancel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
 				frame.dispose();
-				new LoginPage();
 			}
 		});
 		
