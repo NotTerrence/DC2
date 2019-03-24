@@ -272,10 +272,16 @@ public class MainFrame {
 		frame.getContentPane().add(btnLogout);
 		
 		JButton btnUploadSong = new JButton("Upload Song");
+		btnUploadSong.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new UploadSong();
+			}
+		});
 		btnUploadSong.setForeground(Color.WHITE);
 		btnUploadSong.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnUploadSong.setBackground(new Color(0, 153, 51));
-		btnUploadSong.setBounds(1104, 213, 101, 23);
+		btnUploadSong.setBounds(983, 213, 101, 23);
 		frame.getContentPane().add(btnUploadSong);
 		
 		JButton btnMyProfile = new JButton("My Profile");
@@ -290,6 +296,19 @@ public class MainFrame {
 		btnMyProfile.setBackground(new Color(30, 130, 76));
 		btnMyProfile.setBounds(863, 0, 92, 23);
 		frame.getContentPane().add(btnMyProfile);
+		
+		JButton btnCreateAlbum = new JButton("Create Album");
+		btnCreateAlbum.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new CreateAlbum();
+			}
+		});
+		btnCreateAlbum.setForeground(Color.WHITE);
+		btnCreateAlbum.setFont(new Font("Agency FB", Font.BOLD, 15));
+		btnCreateAlbum.setBackground(new Color(30, 130, 76));
+		btnCreateAlbum.setBounds(1094, 213, 111, 23);
+		frame.getContentPane().add(btnCreateAlbum);
         }
                 
         public ArrayList<Playlist> playlist(){
@@ -319,7 +338,7 @@ public class MainFrame {
             Object[] row = new Object[1];
             for(int i = 0; i< list.size(); i++)
             {
-                row[0] = list.get(i).getTitle(); 
+                row[0] = list.get(i).getTitle(i); 
                 model.addRow(row);
             }
         }
@@ -357,7 +376,7 @@ public class MainFrame {
                 row[1] = list.get(i).getAlbum();
                 row[2] = list.get(i).getGenre();
                 row[3] = list.get(i).getYear();
-                row[4] = list.get(i).getArtist();   
+                row[4] = list.get(i).getArtist();
                 model.addRow(row);
             }
         }
