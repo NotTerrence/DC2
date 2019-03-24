@@ -132,12 +132,6 @@ public class LoginPage {
 		panel_1.add(btnExit);
                 
         JButton btnLogin = new JButton("Login");
-        btnLogin.addMouseListener(new MouseAdapter() {
-        	public void mouseClicked(MouseEvent e) {
-        		new Dashboard("");
-        		frame.dispose();
-        	}
-        });
         btnLogin.setOpaque(true);
         btnLogin.setBackground(new Color(34, 167, 240));
         btnLogin.setBorderPainted(true);
