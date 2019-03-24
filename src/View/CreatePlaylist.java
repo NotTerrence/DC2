@@ -39,7 +39,7 @@ public class CreatePlaylist {
 		frame.setBounds(100, 100, 276, 152);
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		

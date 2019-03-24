@@ -59,6 +59,7 @@ public class MainFrame {
 		frame.getContentPane().setBackground(new Color(108,122,137));
 		frame.setUndecorated(true);
 		frame.setVisible(true);
+		frame.setAlwaysOnTop(false);
 		frame.getContentPane().setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -139,6 +140,12 @@ public class MainFrame {
 		scrpnPL.setViewportView(tblPL);
 		
 		JButton btnCreatePlaylist = new JButton("Create Playlist");
+		btnCreatePlaylist.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new CreatePlaylist();
+			}
+		});
 		btnCreatePlaylist.setForeground(Color.WHITE);
 		btnCreatePlaylist.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnCreatePlaylist.setBackground(new Color(34, 167, 240));
