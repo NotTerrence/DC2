@@ -116,7 +116,7 @@ public class MainFrame {
 		lblDc.setForeground(Color.CYAN);
 		lblDc.setFont(new Font("Agency FB", Font.BOLD | Font.ITALIC, 57));
 		lblDc.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDc.setBounds(10, 11, 102, 56);
+		lblDc.setBounds(10, 11, 100, 56);
 		pnlSide.add(lblDc);
 		
 		JScrollPane scrpnPL = new JScrollPane();
@@ -254,45 +254,6 @@ public class MainFrame {
 		    }
 		};
 		
-		JButton btnLoginAsGuest = new JButton("Login as Guest");
-		btnLoginAsGuest.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new GuestFrame();
-			}
-		});
-		btnLoginAsGuest.setBackground(new Color(1,50,67));
-		btnLoginAsGuest.setForeground(Color.WHITE);
-		btnLoginAsGuest.setFont(new Font("Agency FB", Font.BOLD, 15));
-		btnLoginAsGuest.setBounds(965, 0, 111, 23);
-		frame.getContentPane().add(btnLoginAsGuest);
-		
-		JButton btnCreateANew = new JButton("Create a new account!");
-		btnCreateANew.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new SignupFrame();
-			}
-		});
-		btnCreateANew.setBackground(new Color(44,62,80));
-		btnCreateANew.setForeground(Color.WHITE);
-		btnCreateANew.setFont(new Font("Agency FB", Font.BOLD, 15));
-		btnCreateANew.setBounds(1086, 0, 156, 23);
-		frame.getContentPane().add(btnCreateANew);
-		
-		JButton btnLogin = new JButton("Login");
-		btnLogin.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				new LoginPage();
-			}
-		});
-		btnLogin.setBackground(new Color(0, 153, 51));
-		btnLogin.setForeground(Color.WHITE);
-		btnLogin.setFont(new Font("Agency FB", Font.BOLD, 15));
-		btnLogin.setBounds(787, 0, 66, 23);
-		frame.getContentPane().add(btnLogin);
-		
 		JButton btnRefreshDashboard = new JButton("Refresh Dashboard");
 		btnRefreshDashboard.setForeground(Color.WHITE);
 		btnRefreshDashboard.setFont(new Font("Agency FB", Font.BOLD, 15));
@@ -301,6 +262,13 @@ public class MainFrame {
 		frame.getContentPane().add(btnRefreshDashboard);
 		
 		JButton btnLogout = new JButton("Logout");
+		btnLogout.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+				frame.dispose();
+			}
+		});
 		btnLogout.setForeground(Color.WHITE);
 		btnLogout.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnLogout.setBackground(new Color(192, 57, 43));
@@ -330,7 +298,7 @@ public class MainFrame {
 		btnMyProfile.setForeground(Color.WHITE);
 		btnMyProfile.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnMyProfile.setBackground(new Color(30, 130, 76));
-		btnMyProfile.setBounds(863, 0, 92, 23);
+		btnMyProfile.setBounds(1153, 0, 92, 23);
 		frame.getContentPane().add(btnMyProfile);
 		
 		JButton btnCreateAlbum = new JButton("Create Album");

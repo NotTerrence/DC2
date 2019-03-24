@@ -101,6 +101,7 @@ public class SignupFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				new LoginPage();
 				frame.dispose();
 			}
 		});
@@ -117,6 +118,7 @@ public class SignupFrame {
         JButton btnLogin = new JButton("Sign Up");
         btnLogin.addMouseListener(new MouseAdapter() {
         public void mouseClicked(MouseEvent e) {
+        	new LoginPage();
         	String username = txtfldUN.getText();
                 String password = String.valueOf(txtfldPW.getPassword());
         

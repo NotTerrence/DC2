@@ -84,6 +84,7 @@ public class GuestFrame {
 		JButton btnCancel = new JButton("Cancel");
 		btnCancel.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent arg0) {
+				new LoginPage();
 				frame.dispose();
 			}
 		});
@@ -100,6 +101,7 @@ public class GuestFrame {
         JButton btnSignin = new JButton("Sign In");
         btnSignin.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
+        		new MainFrame();
         		String guestname = txtfldUN.getText();
         
         		PreparedStatement st;

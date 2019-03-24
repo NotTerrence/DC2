@@ -44,7 +44,7 @@ public class LoginPage {
 
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 197, 214);
+		frame.setBounds(100, 100, 197, 261);
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +65,7 @@ public class LoginPage {
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(108, 122, 137));
-		panel_1.setBounds(0, 56, 197, 158);
+		panel_1.setBounds(0, 56, 197, 205);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
 		
@@ -149,5 +149,37 @@ public class LoginPage {
         btnLogin.setHorizontalAlignment(btnLogin.CENTER);
 		btnLogin.setBounds(104, 125, 74, 20);
 		panel_1.add(btnLogin);
+		
+		JButton btnGuest = new JButton("Login as Guest");
+		btnGuest.setForeground(Color.CYAN);
+		btnGuest.setOpaque(false);
+		btnGuest.setContentAreaFilled(false);
+		btnGuest.setBorderPainted(false);
+		btnGuest.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				new GuestFrame();
+				frame.dispose();
+			}
+		});
+		btnGuest.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnGuest.setBounds(40, 156, 112, 20);
+		panel_1.add(btnGuest);
+		
+		JButton btnCrtAcc = new JButton("Create a new account!");
+		btnCrtAcc.setForeground(Color.CYAN);
+		btnCrtAcc.setOpaque(false);
+		btnCrtAcc.setContentAreaFilled(false);
+		btnCrtAcc.setBorderPainted(false);
+		btnCrtAcc.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new SignupFrame();
+				frame.dispose();
+			}
+		});
+		btnCrtAcc.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnCrtAcc.setBounds(20, 175, 158, 20);
+		panel_1.add(btnCrtAcc);
 	}
 }
