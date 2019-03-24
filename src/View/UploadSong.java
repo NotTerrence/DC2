@@ -22,7 +22,6 @@ public class UploadSong {
 	private JTextField txtfldTitle;
 	private JTextField txtfldYear;
 	private JTextField txtfldArt;
-	private JTextField txtfldNew;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -43,7 +42,7 @@ public class UploadSong {
 
 	private void initialize() {
 		frame = new JFrame("Upload Song");
-		frame.setBounds(100, 100, 282, 450);
+		frame.setBounds(100, 100, 282, 375);
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +59,7 @@ public class UploadSong {
 		lblUplSong.setHorizontalAlignment(SwingConstants.LEFT);
 		lblUplSong.setForeground(Color.WHITE);
 		lblUplSong.setFont(new Font("Agency FB", Font.PLAIN, 35));
-		lblUplSong.setBounds(10, 0, 196, 56);
+		lblUplSong.setBounds(10, 0, 132, 56);
 		pnlHeader.add(lblUplSong);
 		
 		JLabel lblX = new JLabel("");
@@ -70,7 +69,7 @@ public class UploadSong {
 		
 		JPanel pnlBody = new JPanel();
 		pnlBody.setBackground(new Color(108, 122, 137));
-		pnlBody.setBounds(0, 56, 282, 444);
+		pnlBody.setBounds(0, 56, 282, 308);
 		frame.getContentPane().add(pnlBody);
 		pnlBody.setLayout(null);
 		
@@ -96,16 +95,6 @@ public class UploadSong {
 		txtfldYear.setBounds(50, 42, 222, 20);
 		pnlBody.add(txtfldYear);
 		txtfldYear.setColumns(10);
-		
-		JButton btnAlbCov = new JButton("Upload Cover");
-		btnAlbCov.setOpaque(true);
-		btnAlbCov.setBackground(new Color(34, 167, 240));
-		btnAlbCov.setBorderPainted(true);
-		btnAlbCov.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		btnAlbCov.setForeground(Color.WHITE);
-		btnAlbCov.setHorizontalAlignment(btnAlbCov.CENTER);
-		btnAlbCov.setBounds(156, 292, 116, 21);
-		pnlBody.add(btnAlbCov);
                 
         JButton btnUpl = new JButton("Upload");
         btnUpl.setOpaque(true);
@@ -114,7 +103,7 @@ public class UploadSong {
         btnUpl.setFont(new Font("Agency FB", Font.PLAIN, 16));
         btnUpl.setForeground(Color.WHITE);
         btnUpl.setHorizontalAlignment(btnUpl.CENTER);
-		btnUpl.setBounds(92, 358, 98, 20);
+		btnUpl.setBounds(92, 275, 98, 20);
 		pnlBody.add(btnUpl);
 		
 		JLabel lblAlbum = new JLabel("Album:");
@@ -125,7 +114,7 @@ public class UploadSong {
 		pnlBody.add(lblAlbum);
 		
 		JComboBox cmbboxAlb = new JComboBox();
-		cmbboxAlb.setBounds(79, 211, 193, 20);
+		cmbboxAlb.setBounds(50, 211, 222, 20);
 		pnlBody.add(cmbboxAlb);
 		
 		JLabel lblYear = new JLabel("Year:");
@@ -134,13 +123,6 @@ public class UploadSong {
 		lblYear.setFont(new Font("Agency FB", Font.PLAIN, 16));
 		lblYear.setBounds(10, 41, 30, 20);
 		pnlBody.add(lblYear);
-		
-		JLabel lblAlbCov = new JLabel("Album Cover (New Album):");
-		lblAlbCov.setHorizontalAlignment(SwingConstants.LEFT);
-		lblAlbCov.setForeground(new Color(236, 240, 241));
-		lblAlbCov.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblAlbCov.setBounds(10, 293, 120, 20);
-		pnlBody.add(lblAlbCov);
 		
 		txtfldArt = new JTextField();
 		txtfldArt.setForeground(new Color(228, 241, 254));
@@ -157,41 +139,11 @@ public class UploadSong {
 		lblArtist.setBounds(10, 72, 40, 20);
 		pnlBody.add(lblArtist);
 		
-		JRadioButton radbtnAlb = new JRadioButton("");
-		radbtnAlb.setOpaque(false);
-		radbtnAlb.setBounds(50, 210, 21, 23);
-		pnlBody.add(radbtnAlb);
-		
-		JRadioButton radbtnNew = new JRadioButton("");
-		radbtnNew.setOpaque(false);
-		radbtnNew.setBounds(50, 237, 21, 23);
-		pnlBody.add(radbtnNew);
-		
-		JRadioButton radbtnNone = new JRadioButton("");
-		radbtnNone.setOpaque(false);
-		radbtnNone.setBounds(50, 263, 21, 23);
-		pnlBody.add(radbtnNone);
-		
-		txtfldNew = new JTextField();
-		txtfldNew.setForeground(new Color(228, 241, 254));
-		txtfldNew.setFont(new Font("Arial", Font.PLAIN, 11));
-		txtfldNew.setColumns(10);
-		txtfldNew.setBackground(new Color(46, 49, 49));
-		txtfldNew.setBounds(79, 240, 193, 20);
-		pnlBody.add(txtfldNew);
-		
-		JLabel lblNone = new JLabel("None");
-		lblNone.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNone.setForeground(new Color(236, 240, 241));
-		lblNone.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblNone.setBounds(79, 263, 21, 20);
-		pnlBody.add(lblNone);
-		
 		JLabel lblAudFil = new JLabel("Audio File*");
 		lblAudFil.setHorizontalAlignment(SwingConstants.LEFT);
 		lblAudFil.setForeground(new Color(236, 240, 241));
 		lblAudFil.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblAudFil.setBounds(10, 324, 45, 20);
+		lblAudFil.setBounds(10, 241, 45, 20);
 		pnlBody.add(lblAudFil);
 		
 		JButton btnAudFil = new JButton("Upload Song");
@@ -201,7 +153,7 @@ public class UploadSong {
 		btnAudFil.setFont(new Font("Agency FB", Font.PLAIN, 16));
 		btnAudFil.setBorderPainted(true);
 		btnAudFil.setBackground(new Color(34, 167, 240));
-		btnAudFil.setBounds(156, 324, 116, 21);
+		btnAudFil.setBounds(156, 241, 116, 21);
 		pnlBody.add(btnAudFil);
 		
 		JLabel lblGenre = new JLabel("Genre:");
