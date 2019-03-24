@@ -107,7 +107,7 @@ public class MainFrame {
 		lblDc.setForeground(Color.CYAN);
 		lblDc.setFont(new Font("Agency FB", Font.BOLD | Font.ITALIC, 57));
 		lblDc.setHorizontalAlignment(SwingConstants.LEFT);
-		lblDc.setBounds(10, 11, 194, 114);
+		lblDc.setBounds(10, 11, 102, 56);
 		pnlSide.add(lblDc);
 		
 		JScrollPane scrpnPL = new JScrollPane();
@@ -258,6 +258,12 @@ public class MainFrame {
 		frame.getContentPane().add(btnCreateANew);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new LoginPage();
+			}
+		});
 		btnLogin.setBackground(new Color(0, 153, 51));
 		btnLogin.setForeground(Color.WHITE);
 		btnLogin.setFont(new Font("Agency FB", Font.BOLD, 15));
@@ -286,6 +292,12 @@ public class MainFrame {
 		frame.getContentPane().add(btnUploadSong);
 		
 		JButton btnMyProfile = new JButton("My Profile");
+		btnMyProfile.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new MyProfile();
+			}
+		});
 		btnMyProfile.setForeground(Color.WHITE);
 		btnMyProfile.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnMyProfile.setBackground(new Color(30, 130, 76));
