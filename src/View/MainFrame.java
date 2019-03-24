@@ -113,7 +113,7 @@ public class MainFrame {
 		scrpnPL.setViewportBorder(null);
 		scrpnPL.setOpaque(false);
 		scrpnPL.getViewport().setOpaque(false);
-		scrpnPL.setBounds(10, 247, 194, 459);
+		scrpnPL.setBounds(10, 279, 194, 427);
 		pnlSide.add(scrpnPL);
 		
 		tblPL = new JTable();
@@ -142,17 +142,18 @@ public class MainFrame {
 		btnCreatePlaylist.setForeground(Color.WHITE);
 		btnCreatePlaylist.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnCreatePlaylist.setBackground(new Color(34, 167, 240));
-		btnCreatePlaylist.setBounds(10, 213, 119, 23);
+		btnCreatePlaylist.setBounds(10, 245, 119, 23);
 		pnlSide.add(btnCreatePlaylist);
 		
 		JLabel label = new JLabel("My Profile");
+		label.setHorizontalAlignment(SwingConstants.LEFT);
 		label.setForeground(Color.WHITE);
 		label.setFont(new Font("Agency FB", Font.PLAIN, 40));
 		label.setBounds(10, 99, 159, 56);
 		pnlSide.add(label);
 		
 		JLabel label_1 = new JLabel("Favorite Song:");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
+		label_1.setHorizontalAlignment(SwingConstants.LEFT);
 		label_1.setForeground(new Color(236, 240, 241));
 		label_1.setFont(new Font("Agency FB", Font.PLAIN, 17));
 		label_1.setBounds(10, 151, 74, 20);
@@ -162,22 +163,36 @@ public class MainFrame {
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setForeground(new Color(236, 240, 241));
 		label_2.setFont(new Font("Agency FB", Font.PLAIN, 17));
-		label_2.setBounds(83, 151, 147, 20);
+		label_2.setBounds(83, 151, 121, 20);
 		pnlSide.add(label_2);
 		
 		JLabel label_3 = new JLabel("<Insert playlist here>");
 		label_3.setHorizontalAlignment(SwingConstants.CENTER);
 		label_3.setForeground(new Color(236, 240, 241));
 		label_3.setFont(new Font("Agency FB", Font.PLAIN, 17));
-		label_3.setBounds(93, 171, 137, 20);
+		label_3.setBounds(93, 182, 111, 20);
 		pnlSide.add(label_3);
 		
 		JLabel label_4 = new JLabel("Favorite Playlist:");
-		label_4.setHorizontalAlignment(SwingConstants.CENTER);
+		label_4.setHorizontalAlignment(SwingConstants.LEFT);
 		label_4.setForeground(new Color(236, 240, 241));
 		label_4.setFont(new Font("Agency FB", Font.PLAIN, 17));
-		label_4.setBounds(10, 171, 85, 20);
+		label_4.setBounds(10, 182, 85, 20);
 		pnlSide.add(label_4);
+		
+		JLabel lblMostPlayedSong = new JLabel("Most Played:");
+		lblMostPlayedSong.setHorizontalAlignment(SwingConstants.LEFT);
+		lblMostPlayedSong.setForeground(new Color(236, 240, 241));
+		lblMostPlayedSong.setFont(new Font("Agency FB", Font.PLAIN, 17));
+		lblMostPlayedSong.setBounds(10, 213, 85, 20);
+		pnlSide.add(lblMostPlayedSong);
+		
+		JLabel label_5 = new JLabel("<Insert song here>");
+		label_5.setHorizontalAlignment(SwingConstants.CENTER);
+		label_5.setForeground(new Color(236, 240, 241));
+		label_5.setFont(new Font("Agency FB", Font.PLAIN, 17));
+		label_5.setBounds(85, 213, 119, 20);
+		pnlSide.add(label_5);
 		
 		JScrollPane scrpnDash = new JScrollPane();
 		scrpnDash.setViewportBorder(null);
