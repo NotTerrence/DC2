@@ -378,6 +378,7 @@ public class MainFrame {
             return playlist;
         }
         
+        
         public void showPlaylists(){
             ArrayList<Playlist> list = playlist();
             DefaultTableModel model = (DefaultTableModel)tblPL.getModel();
