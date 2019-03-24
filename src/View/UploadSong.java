@@ -43,7 +43,7 @@ public class UploadSong {
 
 	private void initialize() {
 		frame = new JFrame("Upload Song");
-		frame.setBounds(100, 100, 282, 345);
+		frame.setBounds(100, 100, 282, 450);
 		frame.setUndecorated(true);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -70,7 +70,7 @@ public class UploadSong {
 		
 		JPanel pnlBody = new JPanel();
 		pnlBody.setBackground(new Color(108, 122, 137));
-		pnlBody.setBounds(0, 56, 282, 294);
+		pnlBody.setBounds(0, 56, 282, 444);
 		frame.getContentPane().add(pnlBody);
 		pnlBody.setLayout(null);
 		
@@ -104,7 +104,7 @@ public class UploadSong {
 		btnAlbCov.setFont(new Font("Agency FB", Font.PLAIN, 16));
 		btnAlbCov.setForeground(Color.WHITE);
 		btnAlbCov.setHorizontalAlignment(btnAlbCov.CENTER);
-		btnAlbCov.setBounds(156, 186, 116, 21);
+		btnAlbCov.setBounds(156, 292, 116, 21);
 		pnlBody.add(btnAlbCov);
                 
         JButton btnUpl = new JButton("Upload");
@@ -114,18 +114,18 @@ public class UploadSong {
         btnUpl.setFont(new Font("Agency FB", Font.PLAIN, 16));
         btnUpl.setForeground(Color.WHITE);
         btnUpl.setHorizontalAlignment(btnUpl.CENTER);
-		btnUpl.setBounds(89, 255, 98, 20);
+		btnUpl.setBounds(92, 358, 98, 20);
 		pnlBody.add(btnUpl);
 		
 		JLabel lblAlbum = new JLabel("Album:");
 		lblAlbum.setHorizontalAlignment(SwingConstants.LEFT);
 		lblAlbum.setForeground(new Color(236, 240, 241));
 		lblAlbum.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblAlbum.setBounds(10, 104, 40, 20);
+		lblAlbum.setBounds(10, 210, 40, 20);
 		pnlBody.add(lblAlbum);
 		
 		JComboBox cmbboxAlb = new JComboBox();
-		cmbboxAlb.setBounds(79, 105, 193, 20);
+		cmbboxAlb.setBounds(79, 211, 193, 20);
 		pnlBody.add(cmbboxAlb);
 		
 		JLabel lblYear = new JLabel("Year:");
@@ -139,7 +139,7 @@ public class UploadSong {
 		lblAlbCov.setHorizontalAlignment(SwingConstants.LEFT);
 		lblAlbCov.setForeground(new Color(236, 240, 241));
 		lblAlbCov.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblAlbCov.setBounds(10, 187, 152, 20);
+		lblAlbCov.setBounds(10, 293, 120, 20);
 		pnlBody.add(lblAlbCov);
 		
 		txtfldArt = new JTextField();
@@ -159,17 +159,17 @@ public class UploadSong {
 		
 		JRadioButton radbtnAlb = new JRadioButton("");
 		radbtnAlb.setOpaque(false);
-		radbtnAlb.setBounds(50, 104, 21, 23);
+		radbtnAlb.setBounds(50, 210, 21, 23);
 		pnlBody.add(radbtnAlb);
 		
 		JRadioButton radbtnNew = new JRadioButton("");
 		radbtnNew.setOpaque(false);
-		radbtnNew.setBounds(50, 131, 21, 23);
+		radbtnNew.setBounds(50, 237, 21, 23);
 		pnlBody.add(radbtnNew);
 		
 		JRadioButton radbtnNone = new JRadioButton("");
 		radbtnNone.setOpaque(false);
-		radbtnNone.setBounds(50, 157, 21, 23);
+		radbtnNone.setBounds(50, 263, 21, 23);
 		pnlBody.add(radbtnNone);
 		
 		txtfldNew = new JTextField();
@@ -177,21 +177,21 @@ public class UploadSong {
 		txtfldNew.setFont(new Font("Arial", Font.PLAIN, 11));
 		txtfldNew.setColumns(10);
 		txtfldNew.setBackground(new Color(46, 49, 49));
-		txtfldNew.setBounds(79, 134, 193, 20);
+		txtfldNew.setBounds(79, 240, 193, 20);
 		pnlBody.add(txtfldNew);
 		
 		JLabel lblNone = new JLabel("None");
 		lblNone.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNone.setForeground(new Color(236, 240, 241));
 		lblNone.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblNone.setBounds(79, 157, 40, 20);
+		lblNone.setBounds(79, 263, 21, 20);
 		pnlBody.add(lblNone);
 		
 		JLabel lblAudFil = new JLabel("Audio File*");
 		lblAudFil.setHorizontalAlignment(SwingConstants.LEFT);
 		lblAudFil.setForeground(new Color(236, 240, 241));
 		lblAudFil.setFont(new Font("Agency FB", Font.PLAIN, 16));
-		lblAudFil.setBounds(10, 218, 61, 20);
+		lblAudFil.setBounds(10, 324, 45, 20);
 		pnlBody.add(lblAudFil);
 		
 		JButton btnAudFil = new JButton("Upload Song");
@@ -201,7 +201,62 @@ public class UploadSong {
 		btnAudFil.setFont(new Font("Agency FB", Font.PLAIN, 16));
 		btnAudFil.setBorderPainted(true);
 		btnAudFil.setBackground(new Color(34, 167, 240));
-		btnAudFil.setBounds(156, 218, 116, 21);
+		btnAudFil.setBounds(156, 324, 116, 21);
 		pnlBody.add(btnAudFil);
+		
+		JLabel lblGenre = new JLabel("Genre:");
+		lblGenre.setHorizontalAlignment(SwingConstants.LEFT);
+		lblGenre.setForeground(new Color(236, 240, 241));
+		lblGenre.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		lblGenre.setBounds(10, 99, 40, 20);
+		pnlBody.add(lblGenre);
+		
+		JRadioButton radioButton = new JRadioButton("");
+		radioButton.setOpaque(false);
+		radioButton.setBounds(50, 99, 21, 23);
+		pnlBody.add(radioButton);
+		
+		JRadioButton radioButton_1 = new JRadioButton("");
+		radioButton_1.setOpaque(false);
+		radioButton_1.setBounds(50, 126, 21, 23);
+		pnlBody.add(radioButton_1);
+		
+		JRadioButton radioButton_2 = new JRadioButton("");
+		radioButton_2.setOpaque(false);
+		radioButton_2.setBounds(50, 152, 21, 23);
+		pnlBody.add(radioButton_2);
+		
+		JRadioButton radioButton_3 = new JRadioButton("");
+		radioButton_3.setOpaque(false);
+		radioButton_3.setBounds(50, 178, 21, 23);
+		pnlBody.add(radioButton_3);
+		
+		JLabel lblPop = new JLabel("Pop");
+		lblPop.setForeground(Color.WHITE);
+		lblPop.setHorizontalAlignment(SwingConstants.LEFT);
+		lblPop.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		lblPop.setBounds(79, 103, 46, 14);
+		pnlBody.add(lblPop);
+		
+		JLabel lblRock = new JLabel("Rock");
+		lblRock.setForeground(Color.WHITE);
+		lblRock.setHorizontalAlignment(SwingConstants.LEFT);
+		lblRock.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		lblRock.setBounds(79, 129, 46, 14);
+		pnlBody.add(lblRock);
+		
+		JLabel lblJazz = new JLabel("Jazz");
+		lblJazz.setForeground(Color.WHITE);
+		lblJazz.setHorizontalAlignment(SwingConstants.LEFT);
+		lblJazz.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		lblJazz.setBounds(79, 156, 46, 14);
+		pnlBody.add(lblJazz);
+		
+		JLabel lblClassical = new JLabel("Classical");
+		lblClassical.setForeground(Color.WHITE);
+		lblClassical.setHorizontalAlignment(SwingConstants.LEFT);
+		lblClassical.setFont(new Font("Agency FB", Font.PLAIN, 16));
+		lblClassical.setBounds(79, 182, 46, 14);
+		pnlBody.add(lblClassical);
 	}
 }
