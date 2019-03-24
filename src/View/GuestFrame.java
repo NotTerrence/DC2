@@ -8,8 +8,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class GuestFrame {
@@ -95,6 +100,24 @@ public class GuestFrame {
         JButton btnSignin = new JButton("Sign In");
         btnSignin.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
+        		String guestname = txtfldUN.getText();
+        
+        		PreparedStatement st;
+        		String query = "INSERT INTO `guests`(`guest_name`)"
+                		+ "VALUES(?)";
+        
+        		try {
+            			st = MyConnection.getConnection().prepareStatement(query);
+            			st.setString(1, guestname);
+            
+            		if(st.executeUpdate() > 0)
+            		{
+                		JOptionPane.showMessageDialog(null, "Logged in as " + guestname + "!");
+            		}
+            
+        		} catch (SQLException ex) {
+            		Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
+        		}
         		frame.dispose();
         	}
         });

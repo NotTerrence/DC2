@@ -129,11 +129,6 @@ public class MainFrame {
 		tblPL.setFont(new Font("Agency FB", Font.PLAIN, 15));
 		tblPL.setModel(new DefaultTableModel(
 			new Object[][] {
-				{null},
-				{null},
-				{null},
-				{null},
-				{null},
 			},
 			new String[] {
 				"Playlists"
@@ -237,12 +232,6 @@ public class MainFrame {
 		tblDash.setModel(new DefaultTableModel(
 				
 			new Object[][] {
-				
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
-				{null, null, null, null, null},
 			},
 			new String[] {
 				"Title", "Album", "Genre", "Year", "Artist"
@@ -385,7 +374,7 @@ public class MainFrame {
             Object[] row = new Object[1];
             for(int i = 0; i< list.size(); i++)
             {
-            	row[0] = list.get(i).getTitle();
+            	row[0] = list.get(i).getPlaylistTitle();
                 model.addRow(row);
             }
         }

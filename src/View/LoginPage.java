@@ -8,8 +8,14 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class LoginPage {
@@ -111,7 +117,27 @@ public class LoginPage {
         btnLogin.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		frame.dispose();
+        		PreparedStatement st;
+                        String query = "SELECT * from users where username = ? and password = ?";
+            
+                    try {
+                        String username = txtfldUN.getText();
+                        st = MyConnection.getConnection().prepareStatement(query);
+                        st.setString(1, username);
+                        st.setString(2, txtfldPW.getText());
+                        ResultSet rs = st.executeQuery();
+                    if(rs.next()){
+                        frame.dispose();
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(null, "User/Password incorrect.");
+                        txtfldUN.setText("");
+                        txtfldPW.setText("");
+                    }
+            
+            } catch (SQLException ex) {
+            Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
+            }
         	}
         });
         btnLogin.setOpaque(true);

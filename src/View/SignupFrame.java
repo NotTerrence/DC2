@@ -8,15 +8,21 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class SignupFrame {
 
 	private JFrame frame;
 	private JTextField txtfldUN;
-	private JTextField txtfldPW;
+	private JPasswordField txtfldPW;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -84,7 +90,7 @@ public class SignupFrame {
 		panel_1.add(txtfldUN);
 		txtfldUN.setColumns(10);
 		
-		txtfldPW = new JTextField();
+		txtfldPW = new JPasswordField();
 		txtfldPW.setFont(new Font("Arial", Font.PLAIN, 11));
 		txtfldPW.setBackground(new Color(46, 49, 49));
 		txtfldPW.setForeground(new Color(228, 241, 254));
@@ -110,7 +116,27 @@ public class SignupFrame {
                 
         JButton btnLogin = new JButton("Sign Up");
         btnLogin.addMouseListener(new MouseAdapter() {
-        	public void mouseClicked(MouseEvent e) {
+        public void mouseClicked(MouseEvent e) {
+        	String username = txtfldUN.getText();
+                String password = String.valueOf(txtfldPW.getPassword());
+        
+        	PreparedStatement st;
+        	String query = "INSERT INTO `users`(`username`, `password`)"
+                	+ "VALUES(?, ?)";
+        
+        	try {
+            	st = MyConnection.getConnection().prepareStatement(query);
+            	st.setString(1, username);
+            	st.setString(2, password);
+            
+            	if(st.executeUpdate() > 0)
+            	{
+                	JOptionPane.showMessageDialog(null, username + " has been added!");
+            	}
+            
+        	} catch (SQLException ex) {
+            		Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
+        	}
         		frame.dispose();
         		new LoginPage();
         	}
