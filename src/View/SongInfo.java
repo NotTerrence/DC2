@@ -77,14 +77,14 @@ public class SongInfo {
 		lblTitle.setBounds(10, 205, 30, 20);
 		pnlBody.add(lblTitle);;
                 
-        JButton btnUpl = new JButton("Upload");
+        JButton btnUpl = new JButton("Play");
         btnUpl.setOpaque(true);
         btnUpl.setBackground(new Color(0, 153, 51));
         btnUpl.setBorderPainted(true);
         btnUpl.setFont(new Font("Agency FB", Font.PLAIN, 16));
         btnUpl.setForeground(Color.WHITE);
         btnUpl.setHorizontalAlignment(btnUpl.CENTER);
-		btnUpl.setBounds(106, 333, 98, 20);
+		btnUpl.setBounds(120, 329, 67, 20);
 		pnlBody.add(btnUpl);
 		
 		JLabel lblAlbum = new JLabel("Album:");
