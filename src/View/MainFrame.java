@@ -126,8 +126,14 @@ public class MainFrame {
 		pnlSide.add(scrpnPL);
 		
 		tblPL = new JTable();
+		tblPL.setFont(new Font("Agency FB", Font.PLAIN, 15));
 		tblPL.setModel(new DefaultTableModel(
 			new Object[][] {
+				{null},
+				{null},
+				{null},
+				{null},
+				{null},
 			},
 			new String[] {
 				"Playlists"
@@ -219,16 +225,44 @@ public class MainFrame {
 		frame.getContentPane().add(scrpnDash);
 		
 		tblDash = new JTable();
+		tblDash.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+	        	int row = tblDash.getSelectedRow();
+	            System.out.println(row);
+			}
+		});
+		tblDash.setCellSelectionEnabled(true);
+		tblDash.setFont(new Font("Agency FB", Font.PLAIN, 15));
 		tblDash.setModel(new DefaultTableModel(
+				
 			new Object[][] {
+				
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
+				{null, null, null, null, null},
 			},
 			new String[] {
 				"Title", "Album", "Genre", "Year", "Artist"
 			}
-		));
+		){
+			public boolean isCellEditable(int rowIndex, int mColIndex) {
+				return false;
+			}
+		}
+				);
 		tblDash.setBackground(new Color(108, 122, 137));
 		tblDash.setForeground(new Color(228, 241, 254));
 		scrpnDash.setViewportView(tblDash);
+		DefaultTableModel tblDash = new DefaultTableModel() {
+
+		    @Override
+		    public boolean isCellEditable(int row, int column) {
+		       return false;
+		    }
+		};
 		
 		JButton btnLoginAsGuest = new JButton("Login as Guest");
 		btnLoginAsGuest.addMouseListener(new MouseAdapter() {
