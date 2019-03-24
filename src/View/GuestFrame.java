@@ -44,7 +44,7 @@ public class GuestFrame {
 		frame.setVisible(true);
 		
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 204, 51));
+		panel.setBackground(new Color(103, 128, 159));
 		panel.setBounds(0, 0, 197, 56);
 		frame.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -56,7 +56,7 @@ public class GuestFrame {
 		panel.add(lblLogin);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(0, 51, 102));
+		panel_1.setBackground(new Color(108, 122, 137));
 		panel_1.setBounds(0, 56, 197, 100);
 		frame.getContentPane().add(panel_1);
 		panel_1.setLayout(null);
