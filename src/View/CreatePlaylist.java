@@ -1,4 +1,9 @@
-package View;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package musicplayer;
 
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -8,8 +13,13 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 public class CreatePlaylist {
@@ -21,7 +31,7 @@ public class CreatePlaylist {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CreatePlaylist window = new CreatePlaylist();
+					CreatePlaylist window = new CreatePlaylist(0);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,11 +40,11 @@ public class CreatePlaylist {
 		});
 	}
 
-	public CreatePlaylist() {
-		initialize();
+	public CreatePlaylist(int userid) {
+		initialize(userid);
 	}
 
-	private void initialize() {
+	private void initialize(int userid) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 276, 152);
 		frame.setUndecorated(true);
@@ -95,6 +105,26 @@ public class CreatePlaylist {
         JButton btnDone = new JButton("Done");
         btnDone.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
+        		String title = txtfldPL.getText();
+                    
+                    PreparedStatement st;
+                    String query = "INSERT INTO `playlist`(`name`, `accountID`)"
+                                + " VALUES(?, ?)";
+                    
+                    try {
+                            st = MyConnection.getConnection().prepareStatement(query);
+                            st.setString(1, title);
+                            st.setInt(2, userid);
+                            
+                            if(st.executeUpdate() > 0)
+                            {
+                                JOptionPane.showMessageDialog(null, title + " has been added!");
+                            }
+            
+                            } catch (SQLException ex) {
+                                Logger.getLogger(signupFrame.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                    
         		frame.dispose();
         	}
         });

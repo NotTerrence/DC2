@@ -152,7 +152,7 @@ public class MainFrame {
 		btnCreatePlaylist.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				new CreatePlaylist();
+				new CreatePlaylist(userid);
 			}
 		});
 		btnCreatePlaylist.setForeground(Color.WHITE);
@@ -321,7 +321,7 @@ public class MainFrame {
 		btnCreateAlbum.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new CreateAlbum();
+				new CreateAlbum(userid);
 			}
 		});
 		btnCreateAlbum.setForeground(Color.WHITE);
