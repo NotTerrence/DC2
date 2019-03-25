@@ -128,6 +128,9 @@ public class LoginPage {
         btnLogin.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
+        		//String UN = txtfldUN.getText();
+        		//System.out.println(UN);
+        		
         		PreparedStatement st;
                         String query = "SELECT * from account where username = ? and password = ?";
             
@@ -138,8 +141,10 @@ public class LoginPage {
                         st.setString(2, txtfldPW.getText());
                         ResultSet rs = st.executeQuery();
                     if(rs.next()){
-                        new MainFrame();
-                        frame.dispose();
+                    	String UN = txtfldUN.getText();
+        				System.out.println(UN);
+        				frame.dispose();
+        				new MainFrame(UN);
                     }
                     else{
                         JOptionPane.showMessageDialog(null, "User/Password incorrect.");

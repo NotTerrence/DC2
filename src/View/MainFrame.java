@@ -41,6 +41,7 @@ public class MainFrame {
 	private JLayeredPane layeredPane;
 	private JTable tblDash;
 	private JTable tblPL;
+	private JLabel lblUN;
 	/**
 	 * Launch the application.
 	 */
@@ -48,7 +49,7 @@ public class MainFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame window = new MainFrame();
+					MainFrame window = new MainFrame(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -60,13 +61,14 @@ public class MainFrame {
 	/**
 	 * Create the application.
 	 */
-	public MainFrame() {
-		initialize();
-                showPlaylists();
-                showSongs();
-	}
 	
-	private void initialize() {
+	public MainFrame(String username) {
+		initialize(username);
+		showPlaylists(username);
+                showSongs(username);
+	}
+
+	private void initialize(String username) {
 		frame = new JFrame("Music Applet");
 		frame.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frame.setAlwaysOnTop(true);
@@ -76,6 +78,8 @@ public class MainFrame {
 		frame.setAlwaysOnTop(false);
 		frame.getContentPane().setLayout(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+                int userid = getUserID(username);
 		
 		JPanel pnlTop = new JPanel();
 		pnlTop.setBounds(1328, 0, 32, 16);
@@ -264,7 +268,7 @@ public class MainFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				frame.dispose();
-                                new MainFrame();
+                                new MainFrame(username);
 			}
 		});
 		btnRefreshDashboard.setForeground(Color.WHITE);
@@ -291,7 +295,7 @@ public class MainFrame {
 		btnUploadSong.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new UploadSong();
+				new UploadSong(userid);
 			}
 		});
 		btnUploadSong.setForeground(Color.WHITE);
@@ -325,20 +329,35 @@ public class MainFrame {
 		btnCreateAlbum.setBackground(new Color(30, 130, 76));
 		btnCreateAlbum.setBounds(1094, 213, 111, 23);
 		frame.getContentPane().add(btnCreateAlbum);
+		
+		JLabel lblLIA = new JLabel("Logged in as:");
+		lblLIA.setFont(new Font("Agency FB", Font.PLAIN, 18));
+		lblLIA.setBounds(224, 11, 66, 16);
+		frame.getContentPane().add(lblLIA);
+		
+		JLabel lblUN = new JLabel("");
+		lblUN.setHorizontalAlignment(SwingConstants.LEFT);
+		lblUN.setText(username);
+		lblUN.setForeground(Color.WHITE);
+		lblUN.setFont(new Font("Agency FB", Font.BOLD, 18));
+		lblUN.setBounds(300, 11, 133, 16);
+		frame.getContentPane().add(lblUN);
         }
                 
-        public ArrayList<Playlist> playlist(){
+        public ArrayList<Playlist> playlist(String username){
             ArrayList<Playlist> playlist = new ArrayList<>();
             PreparedStatement st;
             String query = "SELECT name"
-                    + " FROM playlist";
+                    + " FROM playlist"
+                    + " WHERE accountID = ?";
                                 
             try {
             st = MyConnection.getConnection().prepareStatement(query);
+            st.setInt(1, getUserID(username));
             ResultSet rs = st.executeQuery();
             Playlist list;
             while(rs.next()){
-                list = new Playlist(rs.getString("playlist_title"));
+                list = new Playlist(rs.getString("name"));
                 playlist.add(list);
             }
             
@@ -349,8 +368,8 @@ public class MainFrame {
         }
         
         
-        public void showPlaylists(){
-            ArrayList<Playlist> list = playlist();
+        public void showPlaylists(String username){
+            ArrayList<Playlist> list = playlist(username);
             DefaultTableModel model = (DefaultTableModel)tblPL.getModel();
             Object[] row = new Object[1];
             for(int i = 0; i< list.size(); i++)
@@ -360,16 +379,18 @@ public class MainFrame {
             }
         }
                 
-        public ArrayList<Song> songList(){
+        public ArrayList<Song> songList(String username){
             ArrayList<Song> songList = new ArrayList<>();
             PreparedStatement st;
-            String query = "SELECT title, name, genre, year, s.artist"
+            int userid = getUserID(username);
+            String query = "SELECT s.title, a.title, genre, s.year, s.artist"
                     + " FROM song s, album a"
-                    + " WHERE s.albumID = a.albumID";
-                    //+ " WHERE playlist_id = ?";
+                    + " WHERE s.albumID = a.albumID"
+                    + " AND s.uploaderID = ?";
                                 
             try {
             st = MyConnection.getConnection().prepareStatement(query);
+            st.setInt(1, userid);
             ResultSet rs = st.executeQuery();
             Song song;
             
@@ -384,8 +405,8 @@ public class MainFrame {
             return songList;
         }
         
-        public void showSongs(){
-            ArrayList<Song> list = songList();
+        public void showSongs(String username){
+            ArrayList<Song> list = songList(username);
             DefaultTableModel model = (DefaultTableModel)tblDash.getModel();
             Object[] row = new Object[5];
             for(int i = 0; i< list.size(); i++)
@@ -397,6 +418,27 @@ public class MainFrame {
                 row[4] = list.get(i).getArtist();
                 model.addRow(row);
             }
+        }
+        
+        public int getUserID(String username){
+                PreparedStatement st;
+                int userid = 0;
+                String query = "SELECT accountID"
+                    + " FROM account"
+                    + " WHERE username = ?";
+                                
+                try {
+                st = MyConnection.getConnection().prepareStatement(query);
+                st.setString(1, username);
+                ResultSet rs = st.executeQuery();
+                while(rs.next()){
+                    userid = rs.getInt(1);
+                }
+            
+                } catch (SQLException ex) {
+                Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            return userid;
         }
 }
 

@@ -107,7 +107,6 @@ public class GuestFrame {
         JButton btnSignin = new JButton("Sign In");
         btnSignin.addMouseListener(new MouseAdapter() {
         	public void mouseClicked(MouseEvent e) {
-        		new MainFrame();
         		String guestname = txtfldUN.getText();
         
         		PreparedStatement st;
@@ -122,7 +121,7 @@ public class GuestFrame {
             		if(st.executeUpdate() > 0)
             		{
                 		JOptionPane.showMessageDialog(null, "Logged in as " + guestname + "!");
-                                new MainFrame();
+                                new MainFrame(guestname);
                                 frame.dispose();
             		}
             

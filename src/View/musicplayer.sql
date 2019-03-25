@@ -1,69 +1,170 @@
-CREATE DATABASE musicplayer;
-USE musicplayer;
+-- phpMyAdmin SQL Dump
+-- version 4.8.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 19, 2019 at 06:43 AM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
-CREATE TABLE account (
-	accountID int(11) AUTO_INCREMENT,
-	username varchar(50) UNIQUE,
-    password varchar(50),
-    type varchar(50) NOT NULL,
-    PRIMARY KEY (accountID)
-    );
-    
-CREATE TABLE album (
-	albumID int(11) AUTO_INCREMENT,
-    name varchar(50) NOT NULL,
-    albumCover varchar(255) UNIQUE,
-    artist varchar(50),
-    uploaderID int(11) NOT NULL,
-    PRIMARY KEY (albumID),
-    FOREIGN KEY (uploaderID) REFERENCES account(accountID)
-    );
-    
-CREATE TABLE song (
-	songID int(11) AUTO_INCREMENT,
-    uploaderID int (11) NOT NULL,
-    title varchar(50) NOT NULL,
-    year int(11),
-    genre varchar(50),
-    artist varchar(50),
-    albumID int (11),
-    filePath varchar(255) NOT NULL UNIQUE,
-    PRIMARY KEY (songID),
-    FOREIGN KEY (uploaderID) REFERENCES account(accountID),
-    FOREIGN KEY (albumID) REFERENCES album(albumID)
-    );
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
 
-CREATE TABLE playlist (
-	playlistID int(11) AUTO_INCREMENT,
-    name varchar(50) NOT NULL,
-    accountID int(11) NOT NULL,
-    PRIMARY KEY (playlistID),
-    FOREIGN KEY (accountID) REFERENCES account(accountID)
-    );
 
-CREATE TABLE playlistSongs (
-	playlistID int(11),
-    songID int(11),
-    PRIMARY KEY (playlistID, songID),
-    FOREIGN KEY (playlistID) REFERENCES playlist(playlistID),
-    FOREIGN KEY (songID) REFERENCES song(songID)
-    );
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
-CREATE TABLE accountSongActivity (
-	songID int(11),
-    accountID int(11),
-    farovite boolean NOT NULL,
-    numPlays int(11) NOT NULL,
-    PRIMARY KEY (songID, accountID),
-    FOREIGN KEY (accountID) REFERENCES account(accountID),
-    FOREIGN KEY (songID) REFERENCES song(songID)
-    );
+--
+-- Database: `musicplayer`
+--
 
-CREATE TABLE accountPlaylistActivity (
-	playlistID int(11),
-    accountID int(11),
-    favorite boolean NOT NULL,
-    PRIMARY KEY (playlistID, accountID),
-    FOREIGN KEY (accountID) REFERENCES account(accountID),
-    FOREIGN KEY (playlistID) REFERENCES playlist(playlistID)
-    );
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `guests`
+--
+
+CREATE TABLE `guests` (
+  `guest_id` int(11) NOT NULL,
+  `guest_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `guests`
+--
+
+INSERT INTO `guests` (`guest_id`, `guest_name`) VALUES
+(1, 'Carlo'),
+(2, 'Robert'),
+(3, 'Paul');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `playlists`
+--
+
+CREATE TABLE `playlists` (
+  `playlist_id` int(11) NOT NULL,
+  `playlist_title` varchar(100) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `playlists`
+--
+
+INSERT INTO `playlists` (`playlist_id`, `playlist_title`, `user_id`) VALUES
+(1, 'This Is: Jonas Brothers', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `songs`
+--
+
+CREATE TABLE `songs` (
+  `song_id` int(11) NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `album` varchar(100) NOT NULL,
+  `genre` varchar(50) NOT NULL,
+  `year` varchar(11) NOT NULL,
+  `artist_name` varchar(50) NOT NULL,
+  `playlist_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `songs`
+--
+
+INSERT INTO `songs` (`song_id`, `title`, `album`, `genre`, `year`, `artist_name`, `playlist_id`) VALUES
+(1, 'Perfect', 'Divide', 'Pop', '2018', 'Ed Sheeran', NULL),
+(2, 'Shape of You', 'Divide', 'Pop', '2017', 'Ed Sheeran', NULL),
+(3, 'When You Look Me in the Eyes', 'A Little Bit Longer', 'Pop', '2008', 'Jonas Brothers', 1),
+(4, 'Sucker', 'Sucker', 'Pop', '2019', 'Jonas Brothers', 1),
+(5, 'Paranoid', 'Lines, Vines and Trying Times', 'Pop', '2009', 'Jonas Brothers', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `username`, `password`) VALUES
+(1, 'carlo_tongco', 'carlo'),
+(2, 'terence_dugang', 'terence');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `guests`
+--
+ALTER TABLE `guests`
+  ADD PRIMARY KEY (`guest_id`);
+
+--
+-- Indexes for table `playlists`
+--
+ALTER TABLE `playlists`
+  ADD PRIMARY KEY (`playlist_id`);
+
+--
+-- Indexes for table `songs`
+--
+ALTER TABLE `songs`
+  ADD PRIMARY KEY (`song_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `guests`
+--
+ALTER TABLE `guests`
+  MODIFY `guest_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `playlists`
+--
+ALTER TABLE `playlists`
+  MODIFY `playlist_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `songs`
+--
+ALTER TABLE `songs`
+  MODIFY `song_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
