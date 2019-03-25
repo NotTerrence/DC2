@@ -1,4 +1,9 @@
-package View;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package musicplayer;
 
 import java.sql.*;
 import java.awt.EventQueue;
@@ -208,15 +213,14 @@ public class MainFrame {
 		
 		JPanel pnlAC = new JPanel();
 		pnlAC.setBackground(Color.BLACK);
-		pnlAC.setBounds(224, 11, 225, 225);
+		pnlAC.setBounds(224, 53, 214, 183);
 		frame.getContentPane().add(pnlAC);
 		pnlAC.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("<INSERT ALBUM COVER HERE>");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Agency FB", Font.PLAIN, 21));
-		lblNewLabel.setBounds(10, 11, 205, 203);
+		lblNewLabel.setBounds(10, 11, 194, 161);
 		pnlAC.add(lblNewLabel);
 		scrpnDash.setBounds(224, 247, 1126, 459);
 		frame.getContentPane().add(scrpnDash);
@@ -256,6 +260,13 @@ public class MainFrame {
 		};
 		
 		JButton btnRefreshDashboard = new JButton("Refresh Dashboard");
+                btnRefreshDashboard.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+                                new MainFrame();
+			}
+		});
 		btnRefreshDashboard.setForeground(Color.WHITE);
 		btnRefreshDashboard.setFont(new Font("Agency FB", Font.BOLD, 15));
 		btnRefreshDashboard.setBackground(new Color(34,167,240));
@@ -319,8 +330,8 @@ public class MainFrame {
         public ArrayList<Playlist> playlist(){
             ArrayList<Playlist> playlist = new ArrayList<>();
             PreparedStatement st;
-            String query = "SELECT playlist_title"
-                    + " FROM playlists";
+            String query = "SELECT name"
+                    + " FROM playlist";
                                 
             try {
             st = MyConnection.getConnection().prepareStatement(query);
@@ -352,8 +363,9 @@ public class MainFrame {
         public ArrayList<Song> songList(){
             ArrayList<Song> songList = new ArrayList<>();
             PreparedStatement st;
-            String query = "SELECT title, album, genre, year, artist_name"
-                    + " FROM songs";
+            String query = "SELECT title, name, genre, year, s.artist"
+                    + " FROM song s, album a"
+                    + " WHERE s.albumID = a.albumID";
                     //+ " WHERE playlist_id = ?";
                                 
             try {
@@ -387,3 +399,4 @@ public class MainFrame {
             }
         }
 }
+

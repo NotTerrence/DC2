@@ -1,4 +1,9 @@
-package View;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package musicplayer;
 
 import java.sql.*;
 import java.awt.EventQueue;
@@ -17,13 +22,18 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ *
+ * @author user
+ */
 public class LoginPage {
 
 	private JFrame frame;
 	private JTextField txtfldUN;
-	private JTextField txtfldPW;
+	private JPasswordField txtfldPW;
 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -91,7 +101,7 @@ public class LoginPage {
 		panel_1.add(txtfldUN);
 		txtfldUN.setColumns(10);
 		
-		txtfldPW = new JTextField();
+		txtfldPW = new JPasswordField();
 		txtfldPW.setFont(new Font("Arial", Font.PLAIN, 11));
 		txtfldPW.setBackground(new Color(46, 49, 49));
 		txtfldPW.setForeground(new Color(228, 241, 254));
@@ -119,7 +129,7 @@ public class LoginPage {
         	@Override
         	public void mouseClicked(MouseEvent e) {
         		PreparedStatement st;
-                        String query = "SELECT * from users where username = ? and password = ?";
+                        String query = "SELECT * from account where username = ? and password = ?";
             
                     try {
                         String username = txtfldUN.getText();
@@ -128,6 +138,7 @@ public class LoginPage {
                         st.setString(2, txtfldPW.getText());
                         ResultSet rs = st.executeQuery();
                     if(rs.next()){
+                        new MainFrame();
                         frame.dispose();
                     }
                     else{

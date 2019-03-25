@@ -1,4 +1,10 @@
-package View;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package musicplayer;
+
 import java.sql.*;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
@@ -105,22 +111,24 @@ public class GuestFrame {
         		String guestname = txtfldUN.getText();
         
         		PreparedStatement st;
-        		String query = "INSERT INTO `guests`(`guest_name`)"
-                		+ "VALUES(?)";
+        		String query = "INSERT INTO `account`(`username`, `type`)"
+                		+ "VALUES(?, ?)";
         
         		try {
             			st = MyConnection.getConnection().prepareStatement(query);
             			st.setString(1, guestname);
+                                st.setString(2, "guest");
             
             		if(st.executeUpdate() > 0)
             		{
                 		JOptionPane.showMessageDialog(null, "Logged in as " + guestname + "!");
+                                new MainFrame();
+                                frame.dispose();
             		}
             
         		} catch (SQLException ex) {
             		Logger.getLogger(SignupFrame.class.getName()).log(Level.SEVERE, null, ex);
         		}
-        		frame.dispose();
         	}
         });
         btnSignin.setOpaque(true);
