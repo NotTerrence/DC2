@@ -208,14 +208,15 @@ public class MainFrame {
 		
 		JPanel pnlAC = new JPanel();
 		pnlAC.setBackground(Color.BLACK);
-		pnlAC.setBounds(224, 53, 214, 183);
+		pnlAC.setBounds(224, 11, 225, 225);
 		frame.getContentPane().add(pnlAC);
 		pnlAC.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("<INSERT ALBUM COVER HERE>");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setFont(new Font("Agency FB", Font.PLAIN, 21));
-		lblNewLabel.setBounds(10, 11, 194, 161);
+		lblNewLabel.setBounds(10, 11, 205, 203);
 		pnlAC.add(lblNewLabel);
 		scrpnDash.setBounds(224, 247, 1126, 459);
 		frame.getContentPane().add(scrpnDash);
