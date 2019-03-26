@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package musicplayer;
+package View;
 
 import java.sql.*;
 import java.awt.EventQueue;
@@ -128,9 +128,6 @@ public class LoginPage {
         btnLogin.addMouseListener(new MouseAdapter() {
         	@Override
         	public void mouseClicked(MouseEvent e) {
-        		//String UN = txtfldUN.getText();
-        		//System.out.println(UN);
-        		
         		PreparedStatement st;
                         String query = "SELECT * from account where username = ? and password = ?";
             
